@@ -15,8 +15,11 @@ const serviceAccount = {
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
+  
 });
 
-const db = admin.firestore();
+console.log("connect")
 
+const db = admin.firestore();
+ 
 module.exports = db;
