@@ -9,6 +9,7 @@ const globalError = require('./middleware/error')
 
 
 const pharmaciesRouter = require('./routes/pharmacies');
+const UserController = require('./routes/auth');
 
 app.use(cors({ origin:true, credentials:true }));
 app.use(express.json())
@@ -18,6 +19,7 @@ app.use(express.json())
 
 app.use(globalError);
 app.use('/api/',pharmaciesRouter)
+app.use('/api/',UserController)
 
 const port = process.env.PORT || 8081
 const server = app.listen(port, (err)=> {
