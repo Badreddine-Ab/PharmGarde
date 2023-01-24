@@ -3,10 +3,13 @@ require('dotenv').config()
 const db = require('./config/database')
 const express = require('express');
 const cors = require('cors');
+const pharmacieRoutes= require('./routes/pharmacierRout')
 const app = express()
 
 app.use(cors({ origin:true, credentials:true }));
 app.use(express.json())
+
+app.use('.api',pharmacieRoutes.routes )
 
 
 app.all('*',(req,res,next) => {
