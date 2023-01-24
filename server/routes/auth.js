@@ -4,7 +4,6 @@ const router = express.Router();
 
 
 
-// router.get('/', getNearbyPharmacies);
 router.post('/login', user.Login);
 
 
