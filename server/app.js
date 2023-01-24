@@ -5,6 +5,11 @@ const express = require('express');
 const cors = require('cors');
 const pharmacieRoutes= require('./routes/pharmacierRout')
 const app = express()
+const apiError = require('./Utils/apiError')
+const globalError = require('./middleware/error')
+
+
+const pharmaciesRouter = require('./routes/pharmacies');
 
 app.use(cors({ origin:true, credentials:true }));
 app.use(express.json())
@@ -12,10 +17,10 @@ app.use(express.json())
 app.use('.api',pharmacieRoutes.routes )
 
 
-app.all('*',(req,res,next) => {
-    next(new apiError(`Can't find this route: ${req.originalUrl}`,400))
-})
 
+
+app.use(globalError);
+app.use('/api/',pharmaciesRouter)
 
 const port = process.env.PORT || 8081
 const server = app.listen(port, (err)=> {
@@ -24,6 +29,10 @@ const server = app.listen(port, (err)=> {
     }else{
         console.log(err)
     }
+})
+
+app.all('*',(req,res,next) => {
+    next(new apiError(`Can't find this route: ${req.originalUrl}`,400))
 })
 
 // Handle errors outside express
