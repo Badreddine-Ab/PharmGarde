@@ -1,4 +1,4 @@
-const geolib = require('geolib');
+// const geolib = require('geolib');
 const Pharmacy = require('../models/pharmacy');
 const apiError = require("../utils/apiError")
 

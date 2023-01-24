@@ -1,16 +1,18 @@
 import React from 'react'
 import Table from './Table'
-import './sash.css';
+import './Pharmasier.css';
 
-export default function dash() {
-  return (
-    <div>
-    
+export default function Pharmasier() {
+
+return (
+<div>
+
+
     <div>
         <input type="checkbox" id="nav-toggle" />
         <div className="sidebar">
             <div className="sidebar-brand">
-                <h1> <span className="fab fa-asymmetrik"> </span> <span>PharmGarde</span>
+                <h1> <span className="fab fa-asymmetrik"> </span> <span> PharGR</span>
                 </h1>
             </div>
             <div className="sidebar-menu">
@@ -23,20 +25,25 @@ export default function dash() {
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="/appartement">
                             <span className="fas fa-stream" />
-                            <span>pharmaciers</span>
+                            <span>PharmGarde</span>
                         </a>
                     </li>
 
                     <li>
-                    <a href="">
-                        <span className="fas fa-stream" />
-                        <span>commantair</span>
-                    </a>
-                </li>
-                  
-                   
+                        <a href="">
+                            <span className="fas fa-boxes" />
+                            <span>Commentaire</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/">
+                            <span className="fas fa-arrow-right"  />
+                            <span>logout</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -59,13 +66,17 @@ export default function dash() {
                 </div>
             </header>
             <main>
-               
-                <Table />
+              
 
+            <Table />
+
+                  
+              
             </main>
         </div>
     </div>
-    
-    </div>
-  )
+
+</div>
+
+)
 }
