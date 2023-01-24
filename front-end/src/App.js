@@ -1,4 +1,4 @@
-import Appartement from './component/Appartement/Pharmasier'
+import Appartement from './component/Pharmasier/Pharmasier'
 import {Routes, Route} from "react-router-dom";
 import {ToastContainer} from 'react-toastify';
 
