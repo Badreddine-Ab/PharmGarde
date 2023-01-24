@@ -13,6 +13,22 @@ class Pharmacy {
     const addedDoc = await pharmaciesRef.add(pharmacyData);
     return addedDoc.id;
   }
+
+  static async findById(id) {
+    const pharmaciesRef = db.collection('pharmacies');
+    const doc = await pharmaciesRef.doc(id).get();
+    return doc.data();
+  }
+
+  static async update(id, pharmacyData) {
+    const pharmaciesRef = db.collection('pharmacies');
+    await pharmaciesRef.doc(id).update(pharmacyData);
+  }
+
+  static async delete(id) {
+    const pharmaciesRef = db.collection('pharmacies');
+    await pharmaciesRef.doc(id).delete();
+  }
 }
 
 
