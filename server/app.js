@@ -3,6 +3,7 @@ require('dotenv').config()
 const db = require('./config/database')
 const express = require('express');
 const cors = require('cors');
+// const pharmacieRoutes= require('./routes/pharmacierRout')
 const app = express()
 const apiError = require('./Utils/apiError')
 const globalError = require('./middleware/error')
@@ -10,6 +11,7 @@ const globalError = require('./middleware/error')
 
 const pharmaciesRouter = require('./routes/pharmacies');
 const UserController = require('./routes/auth');
+const commantairRouter = require('./routes/Commentaire');
 
 app.use(cors({ origin:true, credentials:true }));
 app.use(express.json())
@@ -17,9 +19,12 @@ app.use(express.json())
 
 
 
+
+
 app.use(globalError);
-app.use('/api/',pharmaciesRouter)
-app.use('/api/',UserController)
+app.use('/api/pharmacy',pharmaciesRouter)
+app.use('/api/user',UserController)
+app.use('/api/commentair',commantairRouter)
 
 const port = process.env.PORT || 8081
 const server = app.listen(port, (err)=> {

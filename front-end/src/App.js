@@ -1,17 +1,24 @@
-import logo from './logo.svg';
-import Dash from './component/dash'
+import Appartement from './component/Pharmasier/Pharmasier'
 import {Routes, Route} from "react-router-dom";
+import {ToastContainer} from 'react-toastify';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div>
+   
     <Routes>
+   
 
-<Route exact path="/dash" element={<Dash/>} />
+<Route exact path="/" element={<Appartement/>} />
+
 
 </Routes>
-    </div>
+
+<ToastContainer autoClose={200} />
+
+</div>
   );
 }
 
