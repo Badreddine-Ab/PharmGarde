@@ -45,6 +45,8 @@ const addPharmacy = async (req, res, next) => {
   }
 };
 
+
+
 const UpdatePharmacy = async (req, res, next) => {
   try {
     const { name, address, latitude, longitude, opening_hours, services } = req.body;

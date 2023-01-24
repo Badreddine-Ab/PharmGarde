@@ -10,9 +10,8 @@ class Authentification {
   }
   static async findOne(field, value) {
     try {
-      const query = user.where(field, "==", value);
-      const snapshot = await query.get();
-      return snapshot.docs[0];
+      const query = await user.where(field, "==", value).get();
+      return query.docs[0];
     } catch (error) {
       return error
     }

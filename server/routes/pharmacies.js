@@ -15,4 +15,5 @@ router.post('/pharmacies/delete/:id', DeletePharmacy);
 
 
 
+
 module.exports = router;
