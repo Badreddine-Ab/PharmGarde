@@ -1,10 +1,8 @@
 const User = require('../models/user')
-const firebase = require('firebase-admin')
 const bcryptjs = require("bcryptjs");
 const apiError = require("../utils/apiError")
 const localstorage = require('local-storage')
 const jwt =require('jsonwebtoken')
-
 
 exports.Login = async (req, res, next) => {
     try {
@@ -13,8 +11,6 @@ exports.Login = async (req, res, next) => {
             return next(new apiError('Missing required fields',400))
         }
         const users = await (await User.findOne('email',email)).data();
-        console.log(users)
-
         if (!users) res.status(400).json("can't find this user");
         else {
           const payload = {username: users.name };
