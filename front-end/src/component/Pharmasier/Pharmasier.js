@@ -7,7 +7,6 @@ export default function Pharmasier() {
 return (
 <div>
 
-
     <div>
         <input type="checkbox" id="nav-toggle" />
         <div className="sidebar">
@@ -49,7 +48,6 @@ return (
         </div>
         <div className="main-content">
 
-
             <header>
                 <h2>
                     <label htmlFor="nav-toggle">
@@ -70,8 +68,7 @@ return (
 
             <Table />
 
-                  
-              
+                    
             </main>
         </div>
     </div>

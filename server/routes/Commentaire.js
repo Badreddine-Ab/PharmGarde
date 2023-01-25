@@ -3,7 +3,7 @@ const { getCommentaire,addCommentair } = require('../controllers/commantair.Js')
 const router = express.Router();
 
 
-router.get('/', getCommentaire);
+router.get('/getCommentaire', getCommentaire);
 router.post('/addCommentair', addCommentair);
 
 
