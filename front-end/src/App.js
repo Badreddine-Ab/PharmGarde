@@ -1,30 +1,24 @@
-
 import Appartement from "./component/Pharmasier/Pharmasier";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Login from "./component/Authentification/Login";
-
-
+import Login from "./component/Authentification/login";
 import "./App.css";
-
+import PrivateRouter from './Router/PrivateRoute'
+import NotFound from './component/NotFound'
+import Pharmasier from "./component/Pharmasier/Pharmasier"; 
 function App() {
   return (
-    <div>
+    <>
       <Routes>
-        <Route exact path="/" element={<Appartement />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route element={<PrivateRouter />}>
+          <Route exact path="/pharmasier" element={<Pharmasier />} />
+        </Route>
+        <Route exact path="/" element={<Login />} />
+        <Route element={<NotFound />} path="*" />
       </Routes>
+      <ToastContainer autoClose={200} />
 
-
-<Route exact path="/" element={<Appartement/>} />
-<Route exact path="/Login" element={<Login/>} />
-
-
-</Routes>
-
-<ToastContainer autoClose={200} />
-    </div>
-
+    </>
   );
 }
 
