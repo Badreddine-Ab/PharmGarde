@@ -22,6 +22,17 @@ const getNearbyPharmacies = async (req, res, next) => {
   }
 };
 
+const getAllPharmacier = async (req, res, next) => {
+  try {
+    const allPharmacier = await Pharmacy.find()
+    res.status(200).send(allPharmacier)
+} catch (error) {
+    res.status(400)
+    throw new Error(error)
+}
+};
+
+
 const addPharmacy = async (req, res, next) => {
   try {
     const { name, address, latitude, longitude, opening_hours, services } = req.body;
@@ -92,6 +103,7 @@ const DeletePharmacy = async (req, res, next) => {
 
 module.exports = {
   getNearbyPharmacies,
+  getAllPharmacier,
   addPharmacy,
   UpdatePharmacy,
   DeletePharmacy

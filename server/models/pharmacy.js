@@ -8,6 +8,12 @@ class Pharmacy {
     return snapshot.docs.map((doc) => doc.data());
   }
 
+  static async find() {
+    const pharmaciesRef = db.collection('pharmacies');
+    const snapshot = await pharmaciesRef.get();
+    return snapshot.docs.map((doc) => doc.data());
+  }
+
   static async create(pharmacyData) {
     const pharmaciesRef = db.collection('pharmacies');
     const addedDoc = await pharmaciesRef.add(pharmacyData);
