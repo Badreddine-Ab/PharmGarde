@@ -1,16 +1,20 @@
-import Appartement from './component/Pharmasier/Pharmasier'
-import {Routes, Route} from "react-router-dom";
-import {ToastContainer} from 'react-toastify';
-import Login from './component/Auteltfcation/login'
 
-import './App.css';
+import Appartement from "./component/Pharmasier/Pharmasier";
+import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Login from "./component/Authentification/Login";
+
+
+import "./App.css";
 
 function App() {
   return (
     <div>
-   
-    <Routes>
-   
+      <Routes>
+        <Route exact path="/" element={<Appartement />} />
+        <Route exact path="/login" element={<Login />} />
+      </Routes>
+
 
 <Route exact path="/" element={<Appartement/>} />
 <Route exact path="/Login" element={<Login/>} />
@@ -19,8 +23,8 @@ function App() {
 </Routes>
 
 <ToastContainer autoClose={200} />
+    </div>
 
-</div>
   );
 }
 
