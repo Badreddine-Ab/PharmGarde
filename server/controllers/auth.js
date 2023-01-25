@@ -41,14 +41,17 @@ exports.Login = async (req, res, next) => {
 // method : post => url : api/auth/forgetpassword =>acces : public
 exports.ForgetPassword  = async(req, res) => 
 {
-  const user = await(await User.findOne("email",req.body.email)).data()
   try {
-     if(!user) res.status(400).json('invalide mail')
-
-     sendEmail(user.email,jwt.sign({user:user.email}, process.env.ACCESS_TOKEN, { expiresIn: "10m" }),user.name,'to reset your password','/restpassword/')  
-    res.status(200).json("verifies votre email")  
+    const user = await(await User.findOne("email",req.body.email)).data()
+     if(!user) {
+      res.status(400).json('invalide mail')
+     }
+     else{
+       sendEmail(user.email,jwt.sign({user:user.email}, process.env.ACCESS_TOKEN, { expiresIn: "10m" }),user.name,'to reset your password','/restpassword/')  
+       res.status(200).json("verifies votre email")  
+     }
   } catch (error) {
-  res.json(error)  
+  res.status(400).json(error)  
   } 
 }
 

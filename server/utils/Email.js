@@ -11,7 +11,6 @@ let transporter = nodemailer.createTransport(
 });
 exports.sendEmail = (email,activemail,username,msg,route)=>
 {
-  console.log("im in send email")
   transporter.sendMail(
   {
     from: process.env.USER, 
@@ -21,7 +20,7 @@ exports.sendEmail = (email,activemail,username,msg,route)=>
   },
   (error,info)=>
   {
-    if(error) console.log(error);
-    else console.log(" send");    
+    if(error) res.send(error);
+    else res.send("send");    
   })
 }
