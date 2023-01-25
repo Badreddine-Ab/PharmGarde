@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:prod": "NODE_ENV=production node server.js",
-    "start:dev": "nodemon server.js"
+    "start:dev": "nodemon server.js",
+    "user": "node Data/Seeders/SeedersUser"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "firebase-admin": "^11.5.0",
     "geolib": "^3.3.3",
     "jsonwebtoken": "^9.0.0",
+    "local-storage": "^2.0.0",
     "nodemon": "^2.0.20"
   }
 }

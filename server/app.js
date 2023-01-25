@@ -10,6 +10,7 @@ const globalError = require('./middleware/error')
 
 
 const pharmaciesRouter = require('./routes/pharmacies');
+const UserController = require('./routes/auth');
 const commantairRouter = require('./routes/Commentaire');
 
 app.use(cors({ origin:true, credentials:true }));
@@ -21,8 +22,9 @@ app.use(express.json())
 
 
 app.use(globalError);
-app.use('/api/',pharmaciesRouter)
-app.use('/api/',commantairRouter)
+app.use('/api/pharmacy',pharmaciesRouter)
+app.use('/api/user',UserController)
+app.use('/api/commentair',commantairRouter)
 
 const port = process.env.PORT || 8081
 const server = app.listen(port, (err)=> {
