@@ -22,9 +22,9 @@ app.use(express.json())
 
 
 app.use(globalError);
-app.use('/api/pharmacy',pharmaciesRouter)
+app.use('/api',pharmaciesRouter)
 app.use('/api/user',UserController)
-app.use('/api/commentair',commantairRouter)
+app.use('/api',commantairRouter)
 
 const port = process.env.PORT || 8081
 const server = app.listen(port, (err)=> {

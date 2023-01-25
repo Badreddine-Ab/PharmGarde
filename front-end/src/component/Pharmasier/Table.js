@@ -17,10 +17,10 @@ const getAppartement = async () => {
     SetUpdate('get data')
     setLoading(true)
     }
-    useEffect(() => {
+  
     getAppartement()
-    SetUpdate('all data')
-    }, [update])
+   
+   
 
 
 return (
@@ -55,7 +55,7 @@ return (
 
                         <tr key={item._id}>
                         
-                            <td>{item._id} </td> 
+                           
                             <td>{item.name }</td>
                             <td>{item.address }</td>
                             <td>{item.latitude}</td>
