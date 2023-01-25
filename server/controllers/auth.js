@@ -1,5 +1,5 @@
 const User = require("../models/user");
-const apiError = require("../Utils/apiError");
+const apiError = require("../utils/apiError");
 const jwt = require("jsonwebtoken");
 const localstorage = require("local-storage");
 const bcryptjs = require("bcryptjs");
