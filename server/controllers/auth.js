@@ -25,7 +25,7 @@ exports.Login = async (req, res, next) => {
       return next(new apiError("Missing required fields", 400));
     }
     const users = await (await User.findOne("email", email)).data();
-    if (!users) res.status(400).json("can't find this user");
+         if (!users) res.status(400).json("can't find this user");
     else {
       const payload = { username: users.name };
       if (await bcryptjs.compare(password, users.password)) {
