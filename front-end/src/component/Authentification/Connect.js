@@ -23,7 +23,7 @@ export default function Connect() {
           if (res.status == 200) {
             localStorage.setItem("token", res.data.token);
             // localStorage.setItem("username", res.data.username);
-            navig("/");
+            navig("/pharmasier");
           } else {
             SetError(e.response.data);
           }
