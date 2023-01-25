@@ -24,7 +24,7 @@ return (
                     </li>
 
                     <li>
-                        <a href="/appartement">
+                        <a href="">
                             <span className="fas fa-stream" />
                             <span>PharmGarde</span>
                         </a>

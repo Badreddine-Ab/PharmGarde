@@ -20,9 +20,6 @@ const getAppartement = async () => {
   
     getAppartement()
    
-   
-
-
 return (
 <div>
 
