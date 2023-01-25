@@ -16,5 +16,8 @@ class Authentification {
       return error
     }
   }
+  static async update(id, data) {
+    await user.doc(id).update(data);
+  }
 }
 module.exports = Authentification;

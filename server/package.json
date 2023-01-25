@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start:prod": "NODE_ENV=production node server.js",
     "start:dev": "nodemon server.js",
     "user": "node Data/Seeders/SeedersUser"
@@ -24,5 +24,9 @@
     "local-storage": "^2.0.0",
     "nodemailer": "^6.9.0",
     "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "jest": "^29.4.0",
+    "supertest": "^6.3.3"
   }
 }
