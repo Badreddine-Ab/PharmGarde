@@ -5,7 +5,7 @@ import axios from "axios";
 export default function Commante() {
 
   const [commante, setCommante] = useState([]);
-  const [update, SetUpdate] = useState("");
+
 
   const getAllCommant = async () => {
     const res = await axios.get("http://localhost:9000/api/commentaires/get");
@@ -24,9 +24,10 @@ export default function Commante() {
             style={{ backgroundColor: "#f0f2f5" }}
           >
             <div className="card-body p-4">
-              {commante.map((item) => {
+              { commante.map((item ) => {
                 return (
-                  <div className="card mb-4">
+                  
+                  <div key={item._id} className="card mb-4">
                     <div className="card-body">
                       <p> {item.commantair} </p>
                       <div className="d-flex justify-content-between">

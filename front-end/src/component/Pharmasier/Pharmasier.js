@@ -1,5 +1,6 @@
 import React from "react";
 import Table from "./Table";
+import { Link } from 'react-router-dom'
 import "./Pharmasier.css";
 
 export default function Pharmasier() {
@@ -17,31 +18,31 @@ export default function Pharmasier() {
           <div className="sidebar-menu">
             <ul>
               <li>
-                <a href="#" className="active">
+                <Link to="#" className="active">
                   <span className="fas fa-tachometer-alt" />
                   <span>Dashboard</span>
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="">
+                <Link to="">
                   <span className="fas fa-stream" />
                   <span>PharmGarde</span>
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="/commantair">
+                <Link to="/commantair">
                   <span className="fas fa-boxes" />
                   <span>Commentaire</span>
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="/">
+                <Link to="/">
                   <span className="fas fa-arrow-right" />
                   <span>logout</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
