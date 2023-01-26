@@ -7,7 +7,7 @@ import PrivateRouter from './Router/PrivateRoute'
 import Commantair from './component/commantairs/DashCommant'
 import NotFound from './component/NotFound'
 import Pharmasier from "./component/Pharmasier/Pharmasier"; 
-// import PageForgetPassword from "./Page/ForgetPassword";
+
 function App() {
   return (
     <>
