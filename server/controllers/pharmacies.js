@@ -25,11 +25,16 @@ const getNearbyPharmacies = async (req, res, next) => {
 const getAllPharmacier = async (req, res, next) => {
   try {
     const allPharmacier = await Pharmacy.find()
-    res.status(200).send(allPharmacier)
-} catch (error) {
+    // console.log(allPharmacier)
+    const data = []
+    allPharmacier.forEach(doc => {
+      data.push(doc.id, doc.data())
+    });
+    res.status(200).send(data)
+  } catch (error) {
     res.status(400)
     throw new Error(error)
-}
+  }
 };
 
 
@@ -66,7 +71,7 @@ const UpdatePharmacy = async (req, res, next) => {
       return next(new apiError('Missing required fields. or id', 400))
     }
 
-    const UpdatePharmacy = await Pharmacy.update(id,{
+    const UpdatePharmacy = await Pharmacy.update(id, {
       name,
       address,
       latitude,

@@ -12,10 +12,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route element={<PrivateRouter />}>
           <Route exact path="/pharmasier" element={<Pharmasier />} />
           <Route exact path="/commantair" element={<Commantair />} />
-        </Route>
         <Route exact path="/" element={<Login />} />
         <Route exact path="/forgetpassword" element={<PageForgetPassword />} />
         <Route element={<NotFound />} path="*" />
