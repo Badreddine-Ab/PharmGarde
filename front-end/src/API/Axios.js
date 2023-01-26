@@ -1,5 +1,5 @@
 import axios from "axios";
-const path = "http://localhost:8080/api/";
+const path = "http://localhost:9000/api/";
 
 export const GET = async (args) => {
   return await axios.get(path + args);

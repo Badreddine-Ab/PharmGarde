@@ -26,7 +26,7 @@ const [services, setServices] = useState("")
 
 const AjouterPharmacier =()=>{
 
-  axios.post('http://localhost:9000/api/pharmacies', {
+  axios.post('http://localhost:9000/api/pharmacy/add', {
 
   name: name,
   address: address,
