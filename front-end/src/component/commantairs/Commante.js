@@ -13,10 +13,10 @@ export default function Commante() {
          
         }
        
-        // useEffect(() => {
-        //   getAllCommant()
+        useEffect(() => {
+          getAllCommant()
          
-        //   }, [])   
+          }, [])   
          
 
 

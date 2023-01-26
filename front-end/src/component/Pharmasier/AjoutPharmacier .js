@@ -55,7 +55,6 @@ SetUpdate('all data')
 return (
 <div>
 
-
     <>
         <Button variant="dark" onClick={handleShow}>
             add pharmacier

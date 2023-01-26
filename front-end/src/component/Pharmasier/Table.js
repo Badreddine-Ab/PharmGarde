@@ -17,8 +17,12 @@ const getAppartement = async () => {
     SetUpdate('get data')
     setLoading(true)
     }
-  
-    getAppartement()
+    
+    useEffect(() => {
+
+        getAppartement()
+       
+        },[]) 
    
 return (
 <div>
