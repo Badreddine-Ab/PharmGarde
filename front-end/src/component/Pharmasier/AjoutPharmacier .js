@@ -47,10 +47,7 @@ const AjouterPharmacier =()=>{
 console.log(err)
 })
 }
-useEffect(() => {
 
-SetUpdate('all data')
-}, [update])
 
 return (
 <div>

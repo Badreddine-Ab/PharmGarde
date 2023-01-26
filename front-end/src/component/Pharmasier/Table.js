@@ -18,7 +18,6 @@ const getAppartement = async () => {
     setLoading(true)
     }
   
-    getAppartement()
    
 return (
 <div>
