@@ -16,14 +16,12 @@ const commantairRouter = require('./routes/Commentaire');
 app.use(cors({ origin:true, credentials:true }));
 app.use(express.json())
 
-
-
 app.use(globalError);
-app.use('/api',pharmaciesRouter)
+app.use('/api/pharmacy',pharmaciesRouter)
 app.use('/api/user',UserController)
-app.use('/api',commantairRouter)
+app.use('/api/commentaires',commantairRouter)
 
-const port = process.env.PORT || 8081
+const port = 9000 || process.env.PORT
 const server = app.listen(port, (err)=> {
     if(!err){
     console.log(`the port ${port} is running`)
