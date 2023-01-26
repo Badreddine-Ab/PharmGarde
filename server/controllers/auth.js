@@ -25,12 +25,11 @@ exports.Login = async (req, res, next) => {
       return next(new apiError("Missing required fields", 400));
     }
     const users = await User.findOne("email", email);
-    console.log(users)
      if (users) {
       const payload = { _id: users.id };
-      if (await bcryptjs.compare(password, users[0].password)) {
+      if (await bcryptjs.compare(password, users.data.password)) {
         localstorage("token",jwt.sign(payload, process.env.ACCESS_TOKEN, { expiresIn: "120m" }));
-        res.status(200).json({ token: localstorage("token"), username: users[0].name });
+        res.status(200).json({ token: localstorage("token"), username: users.data.name });
      }       else res.status(400).json("password invalide");
 
     }    else  res.status(400).json("can't find this user");    
@@ -43,13 +42,12 @@ exports.Login = async (req, res, next) => {
 exports.ForgetPassword = async (req, res) => {
   try {
     const user =await User.findOne("email", req.body.email);
-    if (user) {
-      sendEmail(user[0].email, jwt.sign({ _id: user[0].id }, process.env.ACCESS_TOKEN, {expiresIn: "10m", }),
-        user[0].name,"to reset your password", "/restpassword/");
+ if (user) {
+      sendEmail(user.data.email, jwt.sign({ _id: user.id }, process.env.ACCESS_TOKEN, {expiresIn: "10m", }),
+        user.data.name,"to reset your password", "/restpassword/");
       res.status(200).json("vérifiez votre email");
     } else {
       res.status(400).json("invalide mail");
-      console.log("im here")
     }
   } catch (error) {
     res.status(400).json(error);
@@ -65,7 +63,7 @@ exports.restpassword = async (req, res) => {
     res.status(200).json("password modifier");
   }
  }catch(e){
-    res.status(400).json(e);
+    res.status(400).json(e.message);
 
   }
 }

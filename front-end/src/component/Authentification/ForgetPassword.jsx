@@ -1,13 +1,10 @@
 import { POST } from "../../API/Axios";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function ForgetPassword() {
   const [email, setEmail] = useState("");
   const [Error, SetError] = useState("");
   const [sucess, setSucess] = useState("");
-
-  // const navig = useNavigate();
-
   const handleChange = (e) => {
     setEmail(() => ({
       [e.target.name]: e.target.value,
@@ -20,7 +17,6 @@ export default function ForgetPassword() {
       POST("user/forgetpassword", email)
         .then((res) => {
           if (res.status == 200) {
-            //   navig("/pharmasier");
             setSucess(res.data);
             console.log(sucess);
           } else {
@@ -29,7 +25,7 @@ export default function ForgetPassword() {
           console.log(res);
         })
         .catch((e) => {
-          SetError(e.response);
+          SetError(e.response.data);
         });
     } catch (e) {
       SetError(e.response.data);
@@ -37,7 +33,11 @@ export default function ForgetPassword() {
   };
   return (
     <div>
-      {sucess && ( <div className="alert alert-success mt-4" role="alert">{sucess}</div>)}
+      {sucess && ( <>
+      <div className="alert alert-success mt-4" role="alert">{sucess}</div>
+      <Link className="field padding-bottom--24" to="/"> <button className="btn btn-dark text-center"> back to login</button></Link>
+
+      </>)}
       {!sucess && (
         <>
          {Error && ( <div className="alert alert-danger" role="alert">{Error}</div>)}

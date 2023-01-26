@@ -27,7 +27,7 @@ const params=useParams()
           console.log(res);
         })
         .catch((e) => {
-          SetError(e.response);
+          SetError(e.response.data);
         });
     } catch (e) {
       SetError(e.response.data);
