@@ -9,4 +9,7 @@ router.post('/pharmacies', addPharmacy);
 router.post('/pharmacies/update/:id', UpdatePharmacy);
 router.post('/pharmacies/delete/:id', DeletePharmacy);
 
+
+
+
 module.exports = router;

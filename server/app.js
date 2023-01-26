@@ -18,9 +18,6 @@ app.use(express.json())
 
 
 
-
-
-
 app.use(globalError);
 app.use('/api',pharmaciesRouter)
 app.use('/api/user',UserController)

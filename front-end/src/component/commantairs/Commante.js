@@ -22,13 +22,13 @@ export default function Commante() {
  <div className="row d-flex justify-content-center">
   <div className="col-md-8 col-lg-6">
 
-  { commante.map((item ) => {
-    return(
+  
 
-    <div key={item._id} className="card shadow-0 border" style={{backgroundColor: '#f0f2f5'}}>
+    <div className="card shadow-0 border" style={{backgroundColor: '#f0f2f5'}}>
       <div className="card-body p-4">
         
-      
+      { commante.map((item ) => {
+        return(
         <div className="card mb-4">
           <div className="card-body">
             <p> {item.commantair} </p>
@@ -45,11 +45,12 @@ export default function Commante() {
             </div>
           </div>
         </div>
+        )})
+      }
      
       </div>
     </div>
-    )})
-}
+  
   </div>
 </div>
 
