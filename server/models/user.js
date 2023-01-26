@@ -9,12 +9,12 @@ class Authentification {
     return users.docs.map((doc) => doc.data());
   }
   static async findOne(field, value) {
-    try {
-      const query = await user.where(field, "==", value).get();
-      return query.docs[0];
-    } catch (error) {
-      return error
-    }
+      const users = await user.where(field, "==", value).get();
+      return users.docs.map((doc) => {
+        const data = doc.data();
+        data.id = doc.id;
+        return data;
+      })
   }
   static async update(id, data) {
     await user.doc(id).update(data);
