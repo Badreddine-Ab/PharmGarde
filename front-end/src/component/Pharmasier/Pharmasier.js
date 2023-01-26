@@ -24,14 +24,14 @@ return (
                     </li>
 
                     <li>
-                        <a href="/appartement">
+                        <a href="">
                             <span className="fas fa-stream" />
                             <span>PharmGarde</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="/commantair">
                             <span className="fas fa-boxes" />
                             <span>Commentaire</span>
                         </a>
