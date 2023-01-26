@@ -5,7 +5,7 @@ const router = express.Router();
 
 // router.get('/', getNearbyPharmacies);
 router.get('/getAllPharmacier', getAllPharmacier);
-router.post('/pharmacies',verifyToken(), addPharmacy);
+router.post('/pharmacies', addPharmacy);
 router.post('/pharmacies/update/:id', UpdatePharmacy);
 router.post('/pharmacies/delete/:id', DeletePharmacy);
 
