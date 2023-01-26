@@ -16,8 +16,6 @@ const commantairRouter = require('./routes/Commentaire');
 app.use(cors({ origin:true, credentials:true }));
 app.use(express.json())
 
-
-
 app.use(globalError);
 app.use('/api/pharmacy',pharmaciesRouter)
 app.use('/api/user',UserController)

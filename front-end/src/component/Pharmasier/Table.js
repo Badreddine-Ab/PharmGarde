@@ -21,9 +21,11 @@ export default function Table() {
     getAppartement();
   }, []);
 
+
   return (
     <div>
       <div className="card">
+
         <div className="card-header">
           <h2>PharmGarde</h2>
 
