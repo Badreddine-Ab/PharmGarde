@@ -25,6 +25,7 @@ const getNearbyPharmacies = async (req, res, next) => {
 const getAllPharmacier = async (req, res, next) => {
   try {
     const allPharmacier = await Pharmacy.find()
+    console.log(allPharmacier)
     res.status(200).send(allPharmacier)
 } catch (error) {
     res.status(400)
