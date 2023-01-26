@@ -11,7 +11,8 @@ class Pharmacy {
   static async find() {
     const pharmaciesRef = db.collection('pharmacies');
     const snapshot = await pharmaciesRef.get();
-    return snapshot.docs.map((doc) => doc.data());
+    return snapshot;
+    // .docs.map((doc) => doc.data())
   }
 
   static async create(pharmacyData) {

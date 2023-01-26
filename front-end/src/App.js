@@ -13,10 +13,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route element={<PrivateRouter />}>
           <Route exact path="/pharmasier" element={<Pharmasier />} />
           <Route exact path="/commantair" element={<Commantair />} />
-        </Route>
         <Route exact path="/" element={<Login />} />
         <Route exact path="/forgetpassword" element={<PageForgetPassword />} />
         <Route path="/restpassword/:token" element={<PageResetPassword />} />

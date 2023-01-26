@@ -47,6 +47,7 @@ export default function AjoutPharmacier() {
   return (
     <div>
       <>
+
         <Button variant="dark" onClick={handleShow}>
           add pharmacier
         </Button>
@@ -134,4 +135,5 @@ export default function AjoutPharmacier() {
       </>
     </div>
   );
+  
 }
