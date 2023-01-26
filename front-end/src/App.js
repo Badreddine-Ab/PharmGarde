@@ -8,6 +8,7 @@ import Commantair from './component/commantairs/DashCommant'
 import NotFound from './component/NotFound'
 import Pharmasier from "./component/Pharmasier/Pharmasier"; 
 import PageForgetPassword from "./Page/ForgetPassword";
+import PageResetPassword from "./Page/PageResetPassword";
 function App() {
   return (
     <>
@@ -18,6 +19,8 @@ function App() {
         </Route>
         <Route exact path="/" element={<Login />} />
         <Route exact path="/forgetpassword" element={<PageForgetPassword />} />
+        <Route path="/restpassword/:token" element={<PageResetPassword />} />
+
         <Route element={<NotFound />} path="*" />
       </Routes>
       <ToastContainer autoClose={200} />

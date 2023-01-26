@@ -25,14 +25,15 @@ exports.Login = async (req, res, next) => {
       return next(new apiError("Missing required fields", 400));
     }
     const users = await User.findOne("email", email);
-     if (!users) res.status(400).json("can't find this user");
-    else {
+    console.log(users)
+     if (users) {
       const payload = { _id: users.id };
       if (await bcryptjs.compare(password, users[0].password)) {
         localstorage("token",jwt.sign(payload, process.env.ACCESS_TOKEN, { expiresIn: "120m" }));
         res.status(200).json({ token: localstorage("token"), username: users[0].name });
-      } else res.status(400).json("password invalide");
-    }
+     }       else res.status(400).json("password invalide");
+
+    }    else  res.status(400).json("can't find this user");    
   } catch (e) {
     return res.status(400).json(e.message);
   }
@@ -56,16 +57,15 @@ exports.ForgetPassword = async (req, res) => {
 };
 
 exports.restpassword = async (req, res) => {
-  const decodedToken = jwt.verify(req.params.token, process.env.ACCESS_TOKEN);
-  if (!decodedToken) console.log("error  token");
-  console.log(req.body.password)
-  User.update(decodedToken._id, {
-    'password': bcryptjs.hashSync(req.body.password, 10),
-  })
-    .then((result) => {
-      res.satuts(400).send(result);
-    })
-    .catch((e) => {
-      res.satuts(400).send(e);
-    });
-};
+  try{
+ const decodedToken = jwt.verify(req.params.token, process.env.ACCESS_TOKEN);
+  if (!decodedToken) res.status(400).json("error  toke")
+  else {
+    User.update(decodedToken._id, {'password': bcryptjs.hashSync(req.body.password, 10)})
+    res.status(200).json("password modifier");
+  }
+ }catch(e){
+    res.status(400).json(e);
+
+  }
+}
