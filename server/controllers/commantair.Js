@@ -26,10 +26,13 @@ const addCommentair = async (req, res, next) => {
 const getCommentaire = async (req, res, next) => {
   try {
     const allCommante = await commante.find()
-    res.status(200).send(allCommante)
+    return  res.status(200).json({
+        message: 'Commante get '
+    });
 } catch (error) {
-    res.status(400)
-    throw new Error(error)
+    return  res.status(400).json({
+        message: "error not get Commante"
+    })
 }
 };
 

@@ -39,6 +39,7 @@ export default function Table() {
         }
     }
 
+
     useEffect(() => {
         getPharmacier();
     }, []);
