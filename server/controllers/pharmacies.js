@@ -80,9 +80,8 @@ const UpdatePharmacy = async (req, res, next) => {
       services
     });
 
-    res.status(201).send(UpdatePharmacy);
+    res.status(201).send("Updated (true)");
   } catch (error) {
-    console.log(error)
     res.status(500).send({ error: 'Error updating pharmacy.' });
   }
 };
