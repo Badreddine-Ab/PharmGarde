@@ -7,5 +7,4 @@ const router = express.Router();
 router.get('/get',verifyToken(), getCommentaire);
 router.post('/add',verifyToken(), addCommentair);
 
-
 module.exports = router;

@@ -9,6 +9,7 @@ export default function Commante() {
 
   const getAllCommant = async () => {
     const res = await axios.get("http://localhost:9000/api/commentaires/get");
+    console.log(res)
     setCommante(res.data);
   };
   useEffect(() => {
