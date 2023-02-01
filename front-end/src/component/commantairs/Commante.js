@@ -53,7 +53,7 @@ export default function Commante() {
                     </div>
                   </div>
                 );
-              })}
+              })} 
             </div>
           </div>
         </div>
