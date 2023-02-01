@@ -1,5 +1,5 @@
 import React from 'react';
-import Picker from './src/components/Pharmacier';
+import Picker from './src/components/Detail';
 
 const App = () => {
   return (
