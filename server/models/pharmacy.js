@@ -36,6 +36,11 @@ class Pharmacy {
     const pharmaciesRef = db.collection('pharmacies');
     await pharmaciesRef.doc(id).delete();
   }
+  static async findby(field, value) {
+    const pharmaciesRef = db.collection('pharmacies').where(field, "==", value);
+    const snapshot = await pharmaciesRef.get();
+    return snapshot.docs.map((doc) => doc.data());
+  }
 }
 
 

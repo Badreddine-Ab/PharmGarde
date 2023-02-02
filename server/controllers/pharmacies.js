@@ -101,14 +101,21 @@ const DeletePharmacy = async (req, res, next) => {
     res.status(500).send({ error: 'Error deleting pharmacy.' });
   }
 };
-
-
-
+const getPharmacierByGard = async (req, res, next) => {
+  try {
+    const allPharmacier = await Pharmacy.findby("opening_hours",req.body.opening_hours)
+    res.status(200).json(allPharmacier)
+  } catch (error) {
+    res.status(400)
+    throw new Error(error)
+  }
+};
 
 module.exports = {
   getNearbyPharmacies,
   getAllPharmacier,
   addPharmacy,
   UpdatePharmacy,
-  DeletePharmacy
+  DeletePharmacy,
+  getPharmacierByGard
 }

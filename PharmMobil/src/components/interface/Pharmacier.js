@@ -1,22 +1,12 @@
 import { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Button,
-  ScrollText,
-  ScrollView,
-} from "react-native";
+import {StyleSheet,Text,View,Image,Button,ScrollText,ScrollView,} from "react-native";
 import { Card } from "react-native-elements";
-
-import axios from "axios";
+import {GET} from "../../Api/Axios";
 export default function Pharmaciera({navigation}) {
   const [pharmacier, setPharmacier] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`http://10.0.2.2:9000/api/pharmacy/getAllPharmacier`)
+    GET('pharmacy/getAllPharmacier')
       .then((response) => {
         setPharmacier(response.data);
       }).catch(e=>{
