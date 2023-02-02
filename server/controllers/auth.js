@@ -5,19 +5,6 @@ const localstorage = require("local-storage");
 const bcryptjs = require("bcryptjs");
 const { sendEmail } = require("../utils/Email");
 
-// exports.register = async (req, res, next) => {
-//   try {
-//     const { name, email, password } = req.body;
-//     const hash = bcryptjs.hashSync(password, 10);
-//     if (!name || !email || !password) {
-//       return next(new apiError("Missing required fields", 400));
-//     }
-//     res.status(201).json(await User.register({ name, email, hash }));
-//   } catch (error) {
-//     res.status(500).send({ error: "Error adding new user" });
-//   }
-// };
-
 exports.Login = async (req, res, next) => {
   try {
     const { email, password } = req.body;

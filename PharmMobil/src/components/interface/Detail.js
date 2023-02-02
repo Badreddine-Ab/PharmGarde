@@ -12,7 +12,7 @@ export default function Detail ({route}){
       message: 'Example message to share',
       url: 'https://example.com'
     })
-    
+
   };
   const {id} = route.params;
 
