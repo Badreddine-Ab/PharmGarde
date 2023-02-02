@@ -28,7 +28,7 @@ const getAllPharmacier = async (req, res, next) => {
     // console.log(allPharmacier)
     const data = []
     allPharmacier.forEach(doc => {
-      data.push(doc.id, doc.data())
+      data.push({id:doc.id, data:doc.data()})
     });
     res.status(200).send(data)
   } catch (error) {

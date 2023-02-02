@@ -19,6 +19,7 @@ export default function Pharmaciera({navigation}) {
       .get(`http://10.0.2.2:9000/api/pharmacy/getAllPharmacier`)
       .then((response) => {
         setPharmacier(response.data);
+        console.log(response.data)
       }).catch(e=>{
         console.log(e)
       });
@@ -38,9 +39,10 @@ export default function Pharmaciera({navigation}) {
                   />
                 </View>
                 <View>
-                  <Text style={styles.Title}>Pharmacie {item.name}</Text>
-                  <Text style={styles.Open}>{item.opening_hours}</Text>
-                  <Text style={styles.paragraph}>{item.address} </Text>
+                  <Text style={styles.Title}>Pharmacie {item.data.name}</Text>
+                  <Text style={styles.Open}>{item.data.opening_hours}</Text>
+                  <Text style={styles.paragraph}>{item.data.address} </Text>
+                  <Text style={styles.paragraph}>{item.id} </Text>
                 </View>
               </View>
               <View style={styles.btn}>

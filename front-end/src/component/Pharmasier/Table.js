@@ -37,19 +37,7 @@ export default function Table() {
         const res = await axios.get(
             "http://localhost:9000/api/pharmacy/getAllPharmacier"
         );
-
-        const data = res.data
-        let data_fixed = []
-        let counter = 0
-        for (let index = 0; index < data.length; index++) {
-            counter = index - 1
-            if (index % 2 != 0) {
-                data[index].id = data[counter--];
-                data_fixed.push(data[index])
-            }
-        }
-        setDb(data_fixed)
-        // console.table(data_fixed)
+        setDb(res.data)
         SetUpdate("get data");
         setLoading(true);
     };
@@ -121,12 +109,12 @@ export default function Table() {
                                 {commante.map((item) => {
                                     return (
                                         <tr key={item._id}>
-                                            <td>{item.name}</td>
-                                            <td>{item.address}</td>
-                                            <td>{item.latitude}</td>
-                                            <td>{item.longitude}</td>
-                                            <td>{item.opening_hours}</td>
-                                            <td>{item.services}</td>
+                                            <td>{item.data.name}</td>
+                                            <td>{item.data.address}</td>
+                                            <td>{item.data.latitude}</td>
+                                            <td>{item.data.longitude}</td>
+                                            <td>{item.data.opening_hours}</td>
+                                            <td>{item.data.services}</td>
                                             <td className="up">
                                                 <button
                                                     type="button"
