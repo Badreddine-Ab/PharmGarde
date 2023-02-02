@@ -8,6 +8,7 @@ import NotFound from "./component/NotFound";
 import Pharmasier from "./component/Pharmasier/Pharmasier";
 import PageForgetPassword from "./Page/ForgetPassword";
 import PageResetPassword from "./Page/PageResetPassword";
+import LoginRoute from "./Router/LoginRoute";
 function App() {
   return (
     <>
@@ -16,7 +17,9 @@ function App() {
           <Route exact path="/pharmasier" element={<Pharmasier />} />
           <Route exact path="/commantair" element={<Commantair />} />
         </Route>
-        <Route exact path="/" element={<Login />} />
+        <Route element={<LoginRoute />}>
+          <Route exact path="/" element={<Login />} />
+        </Route>
         <Route exact path="/forgetpassword" element={<PageForgetPassword />} />
         <Route path="/restpassword/:token" element={<PageResetPassword />} />
 
@@ -26,5 +29,4 @@ function App() {
     </>
   );
 }
-
 export default App;
