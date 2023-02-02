@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/image/5366461-logo-pharmacie-logo-pharmacie-vectoriel.jpg",
+      "image": "./assets/image/5366461-logo-pharmacie-logo-pharmacie-vectoriel.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

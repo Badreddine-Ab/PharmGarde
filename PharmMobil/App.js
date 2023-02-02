@@ -4,6 +4,7 @@ import Pharmaciera from './src/components/interface/Pharmacier';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Detail from "./src/components/interface/Detail";
+import { color } from 'react-native-elements/dist/helpers';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -14,8 +15,9 @@ const App = () => {
       <Stack.Screen
         name="Home"
         component={Pharmaciera}
-        options={{title: 'Welcome'}}
+        options={{title: 'Pharmacy'}}
       />   
+      
       <Stack.Screen
       name="Detail"
       component={Detail}
