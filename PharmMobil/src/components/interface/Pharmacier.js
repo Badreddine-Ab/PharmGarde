@@ -19,7 +19,6 @@ export default function Pharmaciera({navigation}) {
       .get(`http://10.0.2.2:9000/api/pharmacy/getAllPharmacier`)
       .then((response) => {
         setPharmacier(response.data);
-        console.log(response.data)
       }).catch(e=>{
         console.log(e)
       });
