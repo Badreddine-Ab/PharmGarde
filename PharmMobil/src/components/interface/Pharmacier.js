@@ -39,7 +39,6 @@ export default function Pharmaciera({navigation}) {
                 onPress={()=>navigation.navigate('Detail',{ id: item.id })}
                  color={"#87E1C7"}  />
               </View>
-          
             </Card>
           );
         })}
