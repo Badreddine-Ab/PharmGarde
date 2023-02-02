@@ -38,15 +38,16 @@ export default function Pharmaciera({navigation}) {
                   />
                 </View>
                 <View>
-                  <Text style={styles.Title}>Pharmacie {item.data.name}</Text>
+                  <Text style={styles.Title}>Pharmacie: {item.data.name}</Text>
                   <Text style={styles.Open}>{item.data.opening_hours}</Text>
                   <Text style={styles.paragraph}>{item.data.address} </Text>
-                  <Text style={styles.paragraph}>{item.id} </Text>
                 </View>
               </View>
               <View style={styles.btn}>
                 <Button title="show more" 
-                onPress={()=>navigation.navigate('Detail')} color={"#87E1C7"}  />
+                //  textStyle={{ color:"red "}}
+                onPress={()=>navigation.navigate('Detail',{ id: item.id })}
+                 color={"#87E1C7"}  />
               </View>
           
             </Card>
@@ -64,12 +65,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   paragraph: {
-    fontSize: 15,
+    fontSize: 18,
     marginBottom: 5,
-    marginLeft: 2,
+    marginLeft: 20,
     fontWeight: "bold",
     textAlign: "center",
     color: "#21605D",
+   width:240,
   },
   Open: {
     fontSize: 18,
@@ -81,12 +83,12 @@ const styles = StyleSheet.create({
   },
   Title: {
     marginBottom: 10,
-    marginLeft: 1,
     fontSize: 19,
     color: "#1c95b2",
     textAlign: "center",
     fontWeight: "bold",
     textAlign: "center",
+    width:260,
   },
   Card: {
     flexDirection: "row",
