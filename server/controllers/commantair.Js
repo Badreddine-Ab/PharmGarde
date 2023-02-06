@@ -16,7 +16,7 @@ const addCommentair = async (req, res, next) => {
          
       });
 
-      res.status(201).send(newCommantair);
+      res.status(201).send("commentaire sent successfully");
   } catch (error) {
       console.log(error)
       res.status(500).send({ error: 'Error adding new pharmacy' });
