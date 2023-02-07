@@ -16,7 +16,7 @@ export default function Commante () {
         <Button 
       
           title="Click "
-          color="#1c95b2"
+           color={"#87E1C7"}
           onPress={()=>setOpen(true)}/>
     </View>
         

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {StyleSheet,Text,View,Image,Button,ScrollText,ScrollView,} from "react-native";
+import {StyleSheet,Text,View,Image,Button,ScrollView,AsyncStorage} from "react-native";
 import { Card } from "react-native-elements";
 import {GET} from "../../Api/Axios";
 export default function Pharmaciera({navigation}) {
@@ -9,6 +9,9 @@ export default function Pharmaciera({navigation}) {
     GET('pharmacy/getAllPharmacier')
       .then((response) => {
         setPharmacier(response.data);
+        console.log(response.data);
+
+
       }).catch(e=>{
         console.log(e)
       });
