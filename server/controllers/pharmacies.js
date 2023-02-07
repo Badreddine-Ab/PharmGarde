@@ -103,7 +103,8 @@ const DeletePharmacy = async (req, res, next) => {
 };
 const getPharmacierByGard = async (req, res, next) => {
   try {
-    const allPharmacier = await Pharmacy.findby("opening_hours",req.body.opening_hours)
+    const allPharmacier = await Pharmacy.findby("opening_hours",req)
+    console.log(req)
     res.status(200).json(allPharmacier)
   } catch (error) {
     res.status(400)

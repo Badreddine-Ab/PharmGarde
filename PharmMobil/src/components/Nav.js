@@ -15,11 +15,11 @@ import {
 } from "react-native";
 import { useState, useRef } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import Pharmaciera from "./interface/Pharmacier";
-
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Detail from "./interface/Detail";
+import Icon from "react-native-vector-icons/Entypo";
+import Favorite from "react-native-vector-icons/MaterialIcons";
+
 const Stack = createNativeStackNavigator();
 
 export default function Nav() {
@@ -88,7 +88,7 @@ export default function Nav() {
           drawerWidth={300}
           renderNavigationView={navigationViewRight}
         >
-          <View>
+          <View style={styles.color}>
             <ScrollView
               refreshControl={
                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -127,7 +127,7 @@ export default function Nav() {
                 tabBarIcon: () => (
                   <>
                     <Image style={{ height: 14 }} />
-                    <Text style={styles.TextButton}>Pharmacys</Text>
+                    <Icon name="home" size={30} />
                   </>
                 ),
               }}
@@ -140,7 +140,7 @@ export default function Nav() {
                 tabBarIcon: () => (
                   <>
                     <Image style={{ height: 14 }} />
-                    <Text style={styles.TextButton}>Favourites</Text>
+                    <Favorite name="favorite" size={30} />
                   </>
                 ),
               }}
@@ -194,5 +194,8 @@ const styles = StyleSheet.create({
   },
   TextButton: {
     fontWeight: "bold",
+  },
+  color: {
+    backgroundColor: "white",
   },
 });
