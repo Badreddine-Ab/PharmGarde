@@ -8,7 +8,7 @@ router.get('/getAllPharmacier',getAllPharmacier);
 router.post('/add',verifyToken(),addPharmacy);
 router.post('/update/:id',verifyToken(), UpdatePharmacy);
 router.post('/delete/:id',verifyToken(), DeletePharmacy);
-router.get('/', getPharmacierByGard);
+router.post('/', getPharmacierByGard);
 
 
 

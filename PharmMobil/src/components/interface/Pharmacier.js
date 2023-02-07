@@ -1,32 +1,53 @@
 import { useEffect, useState } from "react";
-import {StyleSheet,Text,View,Image,Button,ScrollText,ScrollView,} from "react-native";
+import {StyleSheet,Text,View,Image,Button,ScrollText,ScrollView,TextInput} from "react-native";
 import { Card } from "react-native-elements";
-import {GET} from "../../Api/Axios";
+import {GET,FILTER,POST} from "../../Api/Axios";
 import Icon from 'react-native-vector-icons/Feather'
 import Time from 'react-native-vector-icons/MaterialCommunityIcons'
 export default function Pharmaciera({navigation}) {
   const [pharmacier, setPharmacier] = useState([]);
+  const [Data, setData] = useState("");
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     GET('pharmacy/getAllPharmacier')
       .then((response) => {
+        setRefreshing(true);
+        setTimeout(() => {
+          setRefreshing(false);
+        }, 2000);
         setPharmacier(response.data);
       }).catch(e=>{
         console.log(e.response)
       });
   },[]);
+
+  useEffect(() => {
+      POST('pharmacy/',{opening_hours:Data.opening_hours})
+        .then((response) => {  
+          setPharmacier(response.data);
+          console.log(response.data)
+        }).catch(e=>{
+          console.log(e.response)
+        });
+  
+  },[Data]);
+  
+  console.log(Data)
+
   return (
     <>
     <View style={styles.container}>
     <View style={styles.CardGard}>
         <Card style={styles.cardIcon}>
-         <Icon name="sun" size={30}  /> 
+
+        <Text name="opening_hours"  onPress={()=>setData({opening_hours:"Jour"})}><Icon name="sun" size={30}  /> </Text>
         </Card>
         <Card style={styles.cardIcon}>
-        <Icon name="moon" size={30}  /> 
+        <Text name="opening_hours"  onPress={()=>setData({opening_hours:"Nuit"})}><Icon name="moon" size={30}  /></Text>
         </Card>
         <Card style={styles.cardIcon}>
-        <Time name="hours-24" size={30}  /> 
+        <Text name="opening_hours"  onPress={()=>setData({opening_hours:"24/24"})}><Time name="hours-24" size={30}/></Text>
         </Card>
       </View>
        <ScrollView>

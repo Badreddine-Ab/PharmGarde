@@ -18,8 +18,6 @@ export default function Commante() {
   };
   const saveData = () => {
     setLoading(true);
-    console.log({ name: user.name,
-      commantair: user.commantair})
         POST('Commentaires/add',{ name: user.name,commantair: user.commantair})
       .then((response) => {
         (response.status == 201)?setSuccess(response.data):SetError(response.data)

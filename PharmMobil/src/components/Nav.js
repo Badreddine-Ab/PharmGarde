@@ -31,6 +31,7 @@ export default function Nav() {
 
   const onRefresh = () => {
     setRefreshing(true);
+
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);
@@ -124,23 +125,26 @@ export default function Nav() {
               component={Pharmaciera}
               options={{
                 tabBarLabel: "",
-                tabBarIcon: () => (
-                  <>
+                tabBarIcon: ({ focused })=>(
+                    <>
                     <Image style={{ height: 14 }} />
-                    <Icon name="home" size={30} />
-                  </>
-                ),
+                   <Icon name="home" size={30} style={focused ? styles.focused : styles.TextButton}/>
+                    </>
+                  
+                  ),
+                
               }}
             />
+       
             <Tab.Screen
               name="Favourites"
               component={Favourites}
               options={{
                 tabBarLabel: "",
-                tabBarIcon: () => (
+                tabBarIcon: ({ focused }) => (
                   <>
                     <Image style={{ height: 14 }} />
-                    <Favorite name="favorite" size={30} />
+                   < Text style={focused ? styles.focused : styles.TextButton}><Favorite name="favorite" size={30}  /></Text>
                   </>
                 ),
               }}
@@ -194,8 +198,12 @@ const styles = StyleSheet.create({
   },
   TextButton: {
     fontWeight: "bold",
+  
   },
   color: {
     backgroundColor: "white",
+  },
+  focused: {
+    color:"#87E1C7",
   },
 });
