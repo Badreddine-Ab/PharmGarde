@@ -5,10 +5,15 @@ import { StyleSheet, Text, View, Image, Button, ScrollView, RefreshControl, Draw
 import { useState, useRef } from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import registerNNPushToken from 'native-notify';
+import axios from 'axios'
 
 
 
 export default function Nav() {
+
+  registerNNPushToken(6245, 'bV8hWCDbs9OrULaWSKg7W5');
+
 
   const [refreshing, setRefreshing] = useState(false);
   const drawerLeft = useRef(null);
@@ -44,6 +49,14 @@ export default function Nav() {
   );
 
   const left_drawer = () => {
+
+    axios.post('https://app.nativenotify.com/api/notification', {
+      appId: 6245,
+      appToken: "bV8hWCDbs9OrULaWSKg7W5",
+      title: "Push title here as a string",
+      body: "Push message here as a string",
+    })
+
     drawerLeft.current.openDrawer()
   }
 
