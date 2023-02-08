@@ -15,11 +15,11 @@ import {
 } from "react-native";
 import { useState, useRef } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import Pharmaciera from "./interface/Pharmacier";
-
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Detail from "./interface/Detail";
+import Icon from "react-native-vector-icons/Entypo";
+import Favorite from "react-native-vector-icons/MaterialIcons";
+
 const Stack = createNativeStackNavigator();
 
 export default function Nav() {
@@ -31,6 +31,7 @@ export default function Nav() {
 
   const onRefresh = () => {
     setRefreshing(true);
+
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);
@@ -88,7 +89,7 @@ export default function Nav() {
           drawerWidth={300}
           renderNavigationView={navigationViewRight}
         >
-          <View>
+          <View style={styles.color}>
             <ScrollView
               refreshControl={
                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -124,23 +125,26 @@ export default function Nav() {
               component={Pharmaciera}
               options={{
                 tabBarLabel: "",
-                tabBarIcon: () => (
-                  <>
+                tabBarIcon: ({ focused })=>(
+                    <>
                     <Image style={{ height: 14 }} />
-                    <Text style={styles.TextButton}>Pharmacys</Text>
-                  </>
-                ),
+                   <Icon name="home" size={30} style={focused ? styles.focused : styles.TextButton}/>
+                    </>
+                  
+                  ),
+                
               }}
             />
+       
             <Tab.Screen
               name="Favourites"
               component={Favourites}
               options={{
                 tabBarLabel: "",
-                tabBarIcon: () => (
+                tabBarIcon: ({ focused }) => (
                   <>
                     <Image style={{ height: 14 }} />
-                    <Text style={styles.TextButton}>Favourites</Text>
+                   < Text style={focused ? styles.focused : styles.TextButton}><Favorite name="favorite" size={30}  /></Text>
                   </>
                 ),
               }}
@@ -194,5 +198,12 @@ const styles = StyleSheet.create({
   },
   TextButton: {
     fontWeight: "bold",
+  
+  },
+  color: {
+    backgroundColor: "white",
+  },
+  focused: {
+    color:"#87E1C7",
   },
 });

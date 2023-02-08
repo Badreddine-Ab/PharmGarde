@@ -1,59 +1,28 @@
 import { useEffect, useState } from "react";
-import {StyleSheet,Text,View,Image,Button,ScrollText,ScrollView,TextInput} from "react-native";
+import {StyleSheet,Text,View,Image,Button,ScrollText,ScrollView,} from "react-native";
 import { Card } from "react-native-elements";
-import {GET,FILTER,POST} from "../../Api/Axios";
-import Icon from 'react-native-vector-icons/Feather'
-import Time from 'react-native-vector-icons/MaterialCommunityIcons'
-export default function Pharmaciera({navigation}) {
+import {FILTER} from "../../Api/Axios";
+export default function PharmacieraJour({navigation}) {
   const [pharmacier, setPharmacier] = useState([]);
-  const [Data, setData] = useState("");
-  const [refreshing, setRefreshing] = useState(false);
-
+  const [Data, setData] = useState({opening_hours:""});
   useEffect(() => {
-    GET('pharmacy/getAllPharmacier')
+    setData("Jour")
+    console.log(Data)
+    FILTER('pharmacy/',Data)
       .then((response) => {
-        setRefreshing(true);
-        setTimeout(() => {
-          setRefreshing(false);
-        }, 2000);
+        console.log(Data)
+
         setPharmacier(response.data);
+        console.log(response.data)
       }).catch(e=>{
         console.log(e.response)
       });
   },[]);
-
-  useEffect(() => {
-      POST('pharmacy/',{opening_hours:Data.opening_hours})
-        .then((response) => {  
-          setPharmacier(response.data);
-          console.log(response.data)
-        }).catch(e=>{
-          console.log(e.response)
-        });
-  
-  },[Data]);
-  
-  console.log(Data)
-
   return (
     <>
-    <View style={styles.container}>
-    <View style={styles.CardGard}>
-        <Card style={styles.cardIcon}>
-
-        <Text name="opening_hours"  onPress={()=>setData({opening_hours:"Jour"})}><Icon name="sun" size={30}  /> </Text>
-        </Card>
-        <Card style={styles.cardIcon}>
-        <Text name="opening_hours"  onPress={()=>setData({opening_hours:"Nuit"})}><Icon name="moon" size={30}  /></Text>
-        </Card>
-        <Card style={styles.cardIcon}>
-        <Text name="opening_hours"  onPress={()=>setData({opening_hours:"24/24"})}><Time name="hours-24" size={30}/></Text>
-        </Card>
-      </View>
-       <ScrollView>
-
-      <View >
-     
+    <ScrollView>
+      <View style={styles.container}>
+        
         {pharmacier.map((item) => {
           return (
             <Card key={item.id} title="Local Modules">
@@ -81,8 +50,6 @@ export default function Pharmaciera({navigation}) {
         })}
       </View>
     </ScrollView>
-    </View>
-   
     </>
   );
 }
@@ -129,15 +96,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 20,
   },
-  CardGard: {
-    flexDirection: "row",
-    marginBottom:10,
-    textAlign: 'center',
-  },
-  cardIcon:{
-    borderRadius : 10,
-    backgroundColor: "white",
-    boxShadow: "10px 10px 17px -12px rgba(0,0,0,0.75)"
-
-  }
 });
