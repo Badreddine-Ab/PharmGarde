@@ -19,7 +19,6 @@ import Pharmaciera from "./interface/Pharmacier";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Icon from "react-native-vector-icons/Entypo";
 import Favorite from "react-native-vector-icons/MaterialIcons";
-
 const Stack = createNativeStackNavigator();
 
 export default function Nav() {
@@ -113,10 +112,7 @@ export default function Nav() {
                 </TouchableOpacity>
               </View>
 
-              <TextInput
-                style={styles.input}
-                placeholder="What are you looking for?"
-              />
+              {/* <SearchBar /> */}
             </ScrollView>
           </View>
           <Tab.Navigator screenOptions={{ headerShown: false }}>
@@ -125,17 +121,19 @@ export default function Nav() {
               component={Pharmaciera}
               options={{
                 tabBarLabel: "",
-                tabBarIcon: ({ focused })=>(
-                    <>
+                tabBarIcon: ({ focused }) => (
+                  <>
                     <Image style={{ height: 14 }} />
-                   <Icon name="home" size={30} style={focused ? styles.focused : styles.TextButton}/>
-                    </>
-                  
-                  ),
-                
+                    <Icon
+                      name="home"
+                      size={30}
+                      style={focused ? styles.focused : styles.TextButton}
+                    />
+                  </>
+                ),
               }}
             />
-       
+
             <Tab.Screen
               name="Favourites"
               component={Favourites}
@@ -144,7 +142,9 @@ export default function Nav() {
                 tabBarIcon: ({ focused }) => (
                   <>
                     <Image style={{ height: 14 }} />
-                   < Text style={focused ? styles.focused : styles.TextButton}><Favorite name="favorite" size={30}  /></Text>
+                    <Text style={focused ? styles.focused : styles.TextButton}>
+                      <Favorite name="favorite" size={30} />
+                    </Text>
                   </>
                 ),
               }}
@@ -198,12 +198,11 @@ const styles = StyleSheet.create({
   },
   TextButton: {
     fontWeight: "bold",
-  
   },
   color: {
     backgroundColor: "white",
   },
   focused: {
-    color:"#87E1C7",
+    color: "#87E1C7",
   },
 });
