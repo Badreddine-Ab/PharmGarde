@@ -19,7 +19,7 @@ import Pharmaciera from "./interface/Pharmacier";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Icon from "react-native-vector-icons/Entypo";
 import Favorite from "react-native-vector-icons/MaterialIcons";
-const Stack = createNativeStackNavigator();
+import Map from "./interface/Map";
 
 export default function Nav() {
   const [refreshing, setRefreshing] = useState(false);
@@ -144,6 +144,21 @@ export default function Nav() {
                     <Image style={{ height: 14 }} />
                     <Text style={focused ? styles.focused : styles.TextButton}>
                       <Favorite name="favorite" size={30} />
+                    </Text>
+                  </>
+                ),
+              }}
+            />
+             <Tab.Screen
+              name="map"
+              component={Map}
+              options={{
+                tabBarLabel: "",
+                tabBarIcon: ({ focused }) => (
+                  <>
+                    <Image style={{ height: 14 }} />
+                    <Text style={focused ? styles.focused : styles.TextButton}>
+                      <Favorite name="map" size={30} />
                     </Text>
                   </>
                 ),
