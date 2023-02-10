@@ -6,7 +6,7 @@ export const GET = async (args) => {
 };
 export const GetOne = async (args) => {
   return await axios.get(path + args );
-  
+}
 export const FILTER = async (args,data) => {
   return await axios.get(path + args,data);
 };
