@@ -5,12 +5,11 @@ import {
   View,
   Image,
   Button,
-  ScrollText,
   ScrollView,
   TextInput,
 } from "react-native";
 import { Card } from "react-native-elements";
-import { GET, FILTER, POST } from "../../Api/Axios";
+import { GET,POST } from "../../Api/Axios";
 import Icon from "react-native-vector-icons/Feather";
 import Time from "react-native-vector-icons/MaterialCommunityIcons";
 export default function Pharmaciera({ navigation }) {
