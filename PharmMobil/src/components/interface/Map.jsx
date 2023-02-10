@@ -8,6 +8,8 @@ export default function Map() {
   const [pharmacier, setPharmacier] = useState([]);
   const [location, setLocation] = useState({});
   const [errorMsg, setErrorMsg] = useState(null);
+  const [Latitude, setLatitude] = useState(32.247439);
+  const [Longitude, setLongitude] = useState(-8.52164);
 
   const [region, setRegion] = React.useState({
     latitude: 32.246137,
@@ -16,16 +18,27 @@ export default function Map() {
     longitudeDelta: 0.03,
   });
 
-  const getPermission = async () => {     
+  const getPermission = async () => {   
+
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
       setErrorMsg('Permission to access location was denied');
       return;
     }
+
+
     let Currantlocation = await Location.getCurrentPositionAsync({});
     setLocation(Currantlocation);
+
     console.log(Currantlocation)
+
     console.log(Currantlocation.coords.longitude)
+
+    console.log(Currantlocation.coords.latitude)
+    
+    setLongitude(Currantlocation.coords.longitude)
+    setLatitude(Currantlocation.coords.latitude)
+
 
   };
   useEffect(() => {
@@ -41,7 +54,7 @@ export default function Map() {
   }, []);
 
   
-    let text = JSON.stringify(location.coords);
+    let text = JSON.stringify(location);
   
 
   
@@ -52,7 +65,7 @@ export default function Map() {
       {/* coordinate={{ latitude: 32.247439, longitude: -8.52164 }} */}
       {/* latitude:location.latitude, longitude: location.longitude  */}
         <MapView style={styles.map} initialRegion={region}>
-          <Marker coordinate={{ latitude: 32.247439, longitude: -8.52164}}>
+          <Marker coordinate={{ latitude:Latitude, longitude: Longitude}}>
             <Callout>
               <Text>i'm here</Text>
             </Callout>

@@ -9,7 +9,7 @@ import {
   TextInput,
 } from "react-native";
 import { Card } from "react-native-elements";
-import { GET,POST } from "../../Api/Axios";
+import { GET, POST } from "../../Api/Axios";
 import Icon from "react-native-vector-icons/Feather";
 import Time from "react-native-vector-icons/MaterialCommunityIcons";
 export default function Pharmaciera({ navigation }) {
@@ -23,7 +23,7 @@ export default function Pharmaciera({ navigation }) {
   const filteredData = pharmacier.filter((item) => {
     return item.data.name.toLowerCase().includes(query.toLowerCase());
   });
-  useEffect(() => {
+  const getAllPharmacier = () => {
     GET("pharmacy/getAllPharmacier")
       .then((response) => {
         setPharmacier(response.data);
@@ -31,6 +31,9 @@ export default function Pharmaciera({ navigation }) {
       .catch((e) => {
         console.log(e.response);
       });
+  };
+  useEffect(() => {
+    getAllPharmacier();
   }, []);
 
   useEffect(() => {
@@ -53,6 +56,11 @@ export default function Pharmaciera({ navigation }) {
           style={styles.input}
         />
         <View style={styles.CardGard}>
+          <Card style={styles.cardIcon}>
+            <Text name="opening_hours" onPress={() => getAllPharmacier()}>
+              <Time name="reload" size={30} />{" "}
+            </Text>
+          </Card>
           <Card style={styles.cardIcon}>
             <Text
               name="opening_hours"
@@ -81,7 +89,7 @@ export default function Pharmaciera({ navigation }) {
         <ScrollView>
           <View>
             {filteredData.map((item) => (
-              <Card key={item.id} title="Local Modules">
+              <Card style={styles.Cards} key={item.id} title="Local Modules">
                 <View style={styles.Card}>
                   <View>
                     <Image
@@ -177,5 +185,9 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: 18,
     fontSize: 18,
+  },
+  Cards: {
+    borderRadius:10,
+    
   },
 });
