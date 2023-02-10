@@ -13,6 +13,7 @@ export default function Commante() {
   const onChangeName = (value) => {
     setUser({ ...user, name: value });
   };
+  
   const onChangeCommentaire = (value) => {
     setUser({ ...user, commantair: value });
   };
