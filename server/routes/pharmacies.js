@@ -9,7 +9,7 @@ router.get('/get/:id',getOnePharmacier);
 router.post('/add',verifyToken(),addPharmacy);
 router.post('/update/:id',verifyToken(), UpdatePharmacy);
 router.post('/delete/:id',verifyToken(), DeletePharmacy);
-router.get('/', getPharmacierByGard);
+router.post('/', getPharmacierByGard);
 
 
 module.exports = router;

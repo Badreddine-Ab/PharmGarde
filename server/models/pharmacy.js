@@ -39,7 +39,7 @@ class Pharmacy {
   static async findby(field, value) {
     const pharmaciesRef = db.collection('pharmacies').where(field, "==", value);
     const snapshot = await pharmaciesRef.get();
-    return snapshot.docs.map((doc) => doc.data());
+    return snapshot
   }
 }
 

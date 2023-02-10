@@ -9,13 +9,16 @@ import Nav from "./src/components/Nav";
 
 const App = () => {
   return (
-    // <Nav />
-    <NavigationContainer>
+    <>
+
+     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Nav} />
-        <Stack.Screen name="Detail" component={Detail} />
+      <Stack.Screen name="Home" component={Nav} options={{ headerShown: false }} />
+      <Stack.Screen name="Detail" component={Detail} />
       </Stack.Navigator>
     </NavigationContainer>
+    </>
+   
   );
 };
 export default App;
