@@ -12,6 +12,4 @@ router.post('/delete/:id',verifyToken(), DeletePharmacy);
 router.get('/', getPharmacierByGard);
 
 
-
-
 module.exports = router;

@@ -13,6 +13,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import Favirets from "../components/interface/Favorites"
 import { useState, useRef } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
@@ -67,7 +68,7 @@ export default function Nav() {
   function Favourites() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Favourites here!</Text>
+      <Favirets/>
       </View>
     );
   }
