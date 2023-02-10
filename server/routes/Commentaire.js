@@ -5,6 +5,6 @@ const router = express.Router();
 
 
 router.get('/get',verifyToken(), getCommentaire);
-router.post('/add',verifyToken(), addCommentair);
+router.post('/add', addCommentair);
 
 module.exports = router;

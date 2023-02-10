@@ -1,25 +1,36 @@
-import { StatusBar } from "expo-status-bar";
-import * as React from "react";
+// import * as React from "react";
 import { Card } from "react-native-elements";
 import {GET} from "../../Api/Axios";
-import { View, Image,Text,Button,Share,ScrollView, TouchableOpacity} from "react-native";
-import Form from "../../components/AddCommante/Commante"
-import {} from 'react-native';
-import styles from "../../../steles/style";  
+import React, { useState } from 'react';
+import { View,Image,Text,Button,Share,ScrollView } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+                                                                          import Form from "../../components/AddCommante/Commante"
+  
 export default function Detail ({route}){
 
+  const [data, setData] = useState(null);
+  const [Local, setlocal] = useState(false);
+
+
   const [pharmacier, setPharmacier] = React.useState([]);
-  
+  const storeData = async (key, value) => {
+    try {
+      await AsyncStorage.setItem(key, JSON.stringify(value));
+      setlocal(true)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+ 
   React.useEffect(() => {
     GET(`pharmacy/get/${id}`)
       .then((response) => {
         setPharmacier(response.data);
-        console.log(response.data);
       }).catch(e=>{
         console.log(e)
       });
   },[]);
-
+  
   const shareOptions = () => {
     Share.share({
       title: 'Share via',
@@ -27,42 +38,25 @@ export default function Detail ({route}){
       url: 'https://example.com'
     })  
   };
+
   const {id} = route.params;
 
-
-  const addToFavorites = async (item) => {
-    try {
-      const favorites = await AsyncStorage.getItem('favorites');
-      let favoritesArray;
-      if (favorites) {
-        favoritesArray = JSON.parse(favorites);
-      } else {
-        favoritesArray = [];
-      }
-      favoritesArray.push(item);
-      await AsyncStorage.setItem('favorites', JSON.stringify(favoritesArray));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
-  return (
+return (
     <>
    <ScrollView>
   
     <Card containerStyle={{}} wrapperStyle={{}}>
      
       <Card.Title>Pharmacire</Card.Title>
-
-      <TouchableOpacity>
+      
       <Button 
-     
+      onPress={() => storeData('key',pharmacier)}
         title="partager "
         color={"#87E1C7"}
         accessibilityLabel="Learn more about this purple button"
     />
-    </TouchableOpacity>
-    
+
+
       <Card.Divider />
         <View style={{ position: "relative",alignItems: "center" }} >
       
@@ -71,12 +65,13 @@ export default function Detail ({route}){
            <Text  style={{ paddingBottom: 50 }}>{pharmacier.name}</Text>
          
           <View >
-
+        
               <Button 
-                title="partager"
+              onPress={() => shareOptions()}
+                title="partager "
                 color={"#87E1C7"}
                 accessibilityLabel="Learn more about this purple button"
-              />
+            />
           
           </View>
         </View> 
