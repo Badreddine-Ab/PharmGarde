@@ -19,9 +19,10 @@ export default function Pharmaciera({ navigation }) {
     GET("pharmacy/getAllPharmacier")
       .then((response) => {
         setPharmacier(response.data);
-      })
-      .catch((e) => {
-        console.log(e.response);
+        // console.log(response.data);
+
+      }).catch(e=>{
+        console.log(e)
       });
   };
   useEffect(() => {

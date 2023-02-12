@@ -1,55 +1,83 @@
-import { StatusBar } from "expo-status-bar";
-import * as React from "react";
+// import * as React from "react";
 import { Card } from "react-native-elements";
-import { View, Image,Text,Button,Share,ScrollView } from "react-native";
-import Form from "../../components/AddCommante/Commante"
-import styles from "../../../steles/style";  
+import {GET} from "../../Api/Axios";
+import React, { useState } from 'react';
+import { View,Image,Text,Button,Share,ScrollView } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+                                                                          import Form from "../../components/AddCommante/Commante"
+  
 export default function Detail ({route}){
 
+  const [data, setData] = useState(null);
+  const [Local, setlocal] = useState(false);
+
+
+  const [pharmacier, setPharmacier] = React.useState([]);
+  const storeData = async (key, value) => {
+    try {
+      await AsyncStorage.setItem(key, JSON.stringify(value));
+      setlocal(true)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+ 
+  React.useEffect(() => {
+    GET(`pharmacy/get/${id}`)
+      .then((response) => {
+        setPharmacier(response.data);
+      }).catch(e=>{
+        console.log(e)
+      });
+  },[]);
+  
   const shareOptions = () => {
     Share.share({
       title: 'Share via',
       message: 'Example message to share',
       url: 'https://example.com'
-    })
-
+    })  
   };
+
   const {id} = route.params;
 
-  return (
+return (
+    <>
    <ScrollView>
+  
     <Card containerStyle={{}} wrapperStyle={{}}>
+     
       <Card.Title>Pharmacire</Card.Title>
+      
+      <Button 
+      onPress={() => storeData('key',pharmacier)}
+        title="partager "
+        color={"#87E1C7"}
+        accessibilityLabel="Learn more about this purple button"
+    />
+
+
       <Card.Divider />
-        <View
-          style={{
-            position: "relative",
-            alignItems: "center"
-          }}
-        >
-          <Image
-            style={{ width: "100%", height: 100 }}
-            resizeMode="contain"
-            source={require("../../../assets/medical.png")} 
-        />
-          <Text style={styles.Title}
-          >Pranshu Chittora {id}</Text>
-          <Text  style={{ paddingBottom: 50 }}>Text messages are used for personal, family, business and social purposes. Governmental and non-governmental organizations use text messaging for communication between colleagues. In the 2010s, the sending of short informal messages became an accepted part of many cultures, as happened earlier with emailing.[1] This makes texting a quick and easy way to communicate with friends, family and colleagues, including in contexts where a call would be impolite or inappropriate (e.g., calling very</Text>
-
+        <View style={{ position: "relative",alignItems: "center" }} >
+      
+          <Image style={{ width: "100%", height: 100 }} resizeMode="contain"source={require("../../../assets/medical.png")} />
+          <Text >Pranshu Chittora {id}</Text>
+           <Text  style={{ paddingBottom: 50 }}>{pharmacier.name}</Text>
+         
           <View >
-            <Button 
-            onPress={() => shareOptions()}
-              title="partager "
-              color="#1c95b2"
-              accessibilityLabel="Learn more about this purple button"
-          />
-        </View>
-
-
+        
+              <Button 
+              onPress={() => shareOptions()}
+                title="partager "
+                color={"#87E1C7"}
+                accessibilityLabel="Learn more about this purple button"
+            />
+          
+          </View>
         </View> 
-       
     </Card> 
     <Form/>
     </ScrollView>
+    </>
   );
 }
