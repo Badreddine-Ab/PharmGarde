@@ -20,6 +20,7 @@ export default function Commante() {
   const onChangeName = (value) => {
     setUser({ ...user, name: value });
   };
+  
   const onChangeCommentaire = (value) => {
     setUser({ ...user, commantair: value });
   };
@@ -36,6 +37,7 @@ export default function Commante() {
       .catch((error) => console.log(error));
   };
   return (
+
     <View style={styles.container}>
       {Error && <Text style={{ backgroundColor: "red" }}>{Error}</Text>}
       {success && <Text style={{ backgroundColor: "#87E1C7" }}>{success}</Text>}
@@ -58,6 +60,8 @@ export default function Commante() {
           </Text>
         </View>
       </TouchableOpacity>
+ 
+ 
     </View>
   );
 }
