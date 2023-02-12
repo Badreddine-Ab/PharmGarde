@@ -1,13 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Button,
-  ScrollView,
-  TextInput,
-} from "react-native";
+import {StyleSheet,Text,View,Image,Button,ScrollView,TextInput,} from "react-native";
 import { Card } from "react-native-elements";
 import { GET, POST } from "../../Api/Axios";
 import Icon from "react-native-vector-icons/Feather";
