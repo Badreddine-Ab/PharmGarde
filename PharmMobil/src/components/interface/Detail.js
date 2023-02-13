@@ -56,8 +56,6 @@ export default function Detail({ route }) {
         <Card containerStyle={{}} wrapperStyle={{}}>
           <Card.Title>Pharmacire</Card.Title>
 
-         
-
           <Card.Divider />
           <View style={{ position: "relative", alignItems: "center" }}>
             <Image
@@ -65,19 +63,36 @@ export default function Detail({ route }) {
               resizeMode="contain"
               source={require("../../../assets/medical.png")}
             />
-            <Text>name:{pharmacier.name}</Text>
-            <Text>address:{pharmacier.address}</Text>
-
-            <Text>{pharmacier.opening_hours}</Text>
-            <Text>services:{pharmacier.services}</Text>
-            <View>
             <View style={styles.CardGard}>
-              <Text style={styles.background} onPress={() => shareOptions()}>
-                <Icon name="sharealt" size={30} />
+              <Text style={styles.Title}> Name: </Text>
+              <Text style={styles.paragraph}> {pharmacier.name} </Text>
+            </View>
+
+            <View style={styles.CardGard}>
+              <Text style={styles.Title}> Open: </Text>
+              <Text style={styles.paragraph}>
+                <Text>{pharmacier.opening_hours}</Text>{" "}
               </Text>
-              <Text style={styles.background} onPress={() => storeData("key", pharmacier)}>
-                <Favorite name="favorite" size={30} />
-              </Text>
+            </View>
+            <View style={styles.CardGard}>
+              <Text style={styles.Title}> Services: </Text>
+              <Text style={styles.paragraph}> {pharmacier.services} </Text>
+            </View>
+            <View style={styles.CardGard}>
+              <Text style={styles.Title}> Address: </Text>
+              <Text style={styles.paragraph}> {pharmacier.address} </Text>
+            </View>
+            <View>
+              <View style={styles.CardGard}>
+                <Text style={styles.background} onPress={() => shareOptions()}>
+                  <Icon name="sharealt" size={30} />
+                </Text>
+                <Text
+                  style={styles.background}
+                  onPress={() => storeData("key", pharmacier)}
+                >
+                  <Favorite name="favorite" size={30} />
+                </Text>
               </View>
             </View>
           </View>
@@ -89,11 +104,24 @@ export default function Detail({ route }) {
 }
 const styles = StyleSheet.create({
   background: {
-    color: "#87E1C7",
+    color: "#1c95b2",
   },
   CardGard: {
     flexDirection: "row",
     marginBottom: 10,
+    textAlign: "center",
+  },
+  paragraph: {
+    fontSize: 15,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#21605D",
+  },
+  Title: {
+    fontSize: 15,
+    color: "#1c95b2",
+    textAlign: "center",
+    fontWeight: "bold",
     textAlign: "center",
   },
 });
