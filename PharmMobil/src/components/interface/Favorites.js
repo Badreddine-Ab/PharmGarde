@@ -8,32 +8,54 @@ import Form from "../../components/AddCommante/Commante"
   
 export default function Favorites (){
   const [address, setAddress] = useState('');
-  const [data, setData] = useState();
+  const [data, setData] = useState({
+    name:"",
+    address:"",
+    services:"",
+    opening_hours:""
+  });
 
 
   const retrieveData = async (key) => {
     try {
       const value = await AsyncStorage.getItem(key);
-      if (value !== null) {
+      // if (value !== null) {
         // return JSON.parse(value);
-        setData(value);
-      }
+        const data = JSON.parse(value);
+        console.log(data.name);
+        setData(JSON.stringify(value));
+      // }
     } catch (error) {
       console.error(error);
     }
     
   };
 
-    React.useEffect(() => {
-    retrieveData('key')
-    console.log(retrieveData('key'));
-  },[]);
+    React.useEffect(async() => {
+    // retrieveData('key')
+    const value = await AsyncStorage.getItem('key');
+      const datas = JSON.parse(value);
+      setData({
+      name:datas.name,
+      address:datas.address,
+      services:datas.services,
+      opening_hours:datas.opening_hours
+    });
 
+  },[]);
+console.log(data)
   return (
 
    <View>
-   
-      <Text>{data}</Text> 
+   {/* {data.map((key)=>(
+    <>
+    <Text>{key.name}</Text>
+    </>
+   ))} */}
+      <Text>{data.address}</Text> 
+      <Text>{data.name}</Text> 
+      <Text>{data.services}</Text> 
+      <Text>{data.opening_hours}</Text> 
 
      </View>
 
