@@ -13,7 +13,7 @@ exports.Login = async (req, res, next) => {
     }
     const users = await User.findOne("email", email);
      if (users) {
-      const payload = { _id: users.id };
+      const payload = { _id: users.id,users:email,password:users.data.password };
       if (await bcryptjs.compare(password, users.data.password)) {
         localstorage("token",jwt.sign(payload, process.env.ACCESS_TOKEN, { expiresIn: "120m" }));
         res.status(200).json({ token: localstorage("token"), username: users.data.name });
