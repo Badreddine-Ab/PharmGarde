@@ -1,0 +1,22 @@
+version: '3'
+services:
+  backend:
+  
+    build: ./server
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
+  frontend:
+    build: ./front-end
+    ports:
+      - "3000:3000"
+    volumes:  
+      - ./front-end/src:/app/src
+   
+# relaiton bin container et image les fichier ly andk fy host m3a image
+volumes:
+  mongodb-data:
+    driver: local

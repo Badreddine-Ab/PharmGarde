@@ -62,8 +62,12 @@ return (
       
           <Image style={{ width: "100%", height: 100 }} resizeMode="contain"source={require("../../../assets/medical.png")} />
           <Text >Pranshu Chittora {id}</Text>
-           <Text  style={{ paddingBottom: 50 }}>{pharmacier.name}</Text>
-         
+           <Text >{pharmacier.name}</Text>
+           <Text >{pharmacier. address}</Text>
+           <Text >{pharmacier.latitude}</Text>
+           <Text >{pharmacier.longitude}</Text>
+           <Text >{pharmacier.opening_hours}</Text>
+           <Text >{pharmacier.services}</Text>
           <View >
         
               <Button 
