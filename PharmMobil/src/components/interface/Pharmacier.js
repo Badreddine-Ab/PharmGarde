@@ -9,34 +9,26 @@ export default function Pharmaciera({ navigation }) {
   const [Data, setData] = useState("");
   const [query, setQuery] = useState("");
 
-  const handleSearch = (value) => {
-    setQuery(value);
-  };
+  const handleSearch = (value) => { setQuery(value) };
+
   const filteredData = pharmacier.filter((item) => {
     return item.data.name.toLowerCase().includes(query.toLowerCase());
   });
+
   const getAllPharmacier = () => {
     GET("pharmacy/getAllPharmacier")
-      .then((response) => {
-        setPharmacier(response.data);
-        // console.log(response.data);
-
-      }).catch(e=>{
-        console.log(e)
-      });
+      .then((response) => {setPharmacier(response.data)})
+      .catch((e) => {console.log(e)});
   };
+
   useEffect(() => {
     getAllPharmacier();
   }, []);
 
   useEffect(() => {
     POST("pharmacy/", { opening_hours: Data.opening_hours })
-      .then((response) => {
-        setPharmacier(response.data);
-      })
-      .catch((e) => {
-        console.log(e.response);
-      });
+      .then((response) => {setPharmacier(response.data) })
+      .catch((e) => { console.log(e.response)});
   }, [Data]);
 
   return (
@@ -180,7 +172,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   Cards: {
-    borderRadius:10,
-    
+    borderRadius: 10,
   },
 });

@@ -6,10 +6,8 @@ import * as Location from 'expo-location';
 import {GET} from "../../Api/Axios"
 export default function Map() {
   const [pharmacier, setPharmacier] = useState([]);
-  const [location, setLocation] = useState({});
-  const [errorMsg, setErrorMsg] = useState(null);
-  const [Latitude, setLatitude] = useState(32.247439);
-  const [Longitude, setLongitude] = useState(-8.52164);
+  const [Latitudes, setLatitude] = useState(32.2476266);
+  const [Longitudes, setLongitude] = useState(-8.5216002);
 
   const [region, setRegion] = React.useState({
     latitude: 32.246137,
@@ -19,27 +17,9 @@ export default function Map() {
   });
 
   const getPermission = async () => {   
-
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
-      setErrorMsg('Permission to access location was denied');
-      return;
-    }
-
-
-    let Currantlocation = await Location.getCurrentPositionAsync({});
-    setLocation(Currantlocation);
-
-    console.log(Currantlocation)
-
-    console.log(Currantlocation.coords.longitude)
-
-    console.log(Currantlocation.coords.latitude)
-    
+    let Currantlocation = await Location.getCurrentPositionAsync({});  
     setLongitude(Currantlocation.coords.longitude)
     setLatitude(Currantlocation.coords.latitude)
-
-
   };
   useEffect(() => {
     getPermission()
@@ -53,19 +33,11 @@ export default function Map() {
 
   }, []);
 
-  
-    let text = JSON.stringify(location);
-  
-
-  
   return (
     <>
       <View style={styles.container}>
-      <Text style={styles.paragraph}>{text}</Text>
-      {/* coordinate={{ latitude: 32.247439, longitude: -8.52164 }} */}
-      {/* latitude:location.latitude, longitude: location.longitude  */}
         <MapView style={styles.map} initialRegion={region}>
-          <Marker coordinate={{ latitude:Latitude, longitude: Longitude}}>
+          <Marker coordinate={{latitude:Latitudes, longitude:Longitudes}}>
             <Callout>
               <Text>i'm here</Text>
             </Callout>
@@ -77,8 +49,6 @@ export default function Map() {
             </Callout>
           </Marker>
           ))}
-
-          
         </MapView>
       </View>
     </>
