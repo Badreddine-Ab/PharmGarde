@@ -54,7 +54,7 @@ export default function Commante() {
       />
 
       <TouchableOpacity onPress={saveData}>
-        <View style={{ backgroundColor: "#1c95b2", padding: 10 }}>
+        <View style={{ backgroundColor: "#87E1C7", padding: 10 }}>
           <Text style={{ color: "white", textAlign: "center" }}>
             {loading ? "loading..." : "Save"}
           </Text>
