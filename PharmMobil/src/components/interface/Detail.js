@@ -21,13 +21,13 @@ export default function Detail({ route }) {
   const [Local, setlocal] = useState(false);
 
   const [pharmacier, setPharmacier] = React.useState([]);
-  const storeData = async (key, value) => {
-    try {
-      await AsyncStorage.setItem(key, JSON.stringify(value));
-      setlocal(true);
-    } catch (error) {
-      console.error(error);
-    }
+  const storePharmacy = async (pharmacy) => {
+    let data = (await AsyncStorage.getItem("key")) || "[]";
+    data = JSON.parse(data);
+
+    data.push(pharmacy);
+
+    await AsyncStorage.setItem("key", JSON.stringify(data));
   };
 
   React.useEffect(() => {
@@ -89,7 +89,7 @@ export default function Detail({ route }) {
                 </Text>
                 <Text
                   style={styles.background}
-                  onPress={() => storeData("key", pharmacier)}
+                  onPress={() => storePharmacy(pharmacier)}
                 >
                   <Favorite name="favorite" size={30} />
                 </Text>
