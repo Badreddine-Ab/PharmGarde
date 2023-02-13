@@ -14,7 +14,7 @@ export default function Commante() {
   };
   useEffect(() => {
     getAllCommant();
-  }, []);
+  },[]);
 
   return (
     <div>
